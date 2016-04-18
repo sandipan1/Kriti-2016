@@ -1,0 +1,20 @@
+void MoveAbs(byte Address, long Position)
+{
+   Wire.beginTransmission(Address);
+   Wire.write(4);
+   Wire.write(Position         & 0xff); 
+   Wire.write((Position >>  8) & 0xff);
+   Wire.write((Position >> 32) & 0xff);
+   Wire.write((Position >> 24) & 0xff);
+   Wire.endTransmission();
+}
+void MoveRel(byte Address, long Position)
+{
+   Wire.beginTransmission(Address);
+   Wire.write(8);
+   Wire.write(Position         & 0xff); 
+   Wire.write((Position >>  8) & 0xff);
+   Wire.write((Position >> 32) & 0xff);
+   Wire.write((Position >> 24) & 0xff);
+   Wire.endTransmission();
+}            
